@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>11</title>
+	<meta id="scale" content="initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+	<style type="text/css">
+
+		*{
+			padding:0;
+			margin:0;
+		}
+		@font-face {
+		  font-family: 'iconfont';  /* project id 840254 */
+		  src: url('http://at.alicdn.com/t/font_840254_vl5bostuzqe.eot');
+		  src: url('http://at.alicdn.com/t/font_840254_vl5bostuzqe.eot?#iefix') format('embedded-opentype'),
+		  url('http://at.alicdn.com/t/font_840254_vl5bostuzqe.woff') format('woff'),
+		  url('http://at.alicdn.com/t/font_840254_vl5bostuzqe.ttf') format('truetype'),
+		  url('http://at.alicdn.com/t/font_840254_vl5bostuzqe.svg#iconfont') format('svg');
+		}
+		.iconfont{
+		    font-family:"iconfont" !important;
+		    font-size:16px;font-style:normal;
+		    -webkit-font-smoothing: antialiased;
+		    -webkit-text-stroke-width: 0.2px;
+		    -moz-osx-font-smoothing: grayscale;
+		}
+
+		.module1{
+			width: 100%;
+			height:200px;
+		}
+		.module1:nth-of-type(1){
+			background-color: #f00;
+		}
+		.module1:nth-of-type(2){
+			background-color: #0f0;
+		}
+		.module1:nth-of-type(3){
+			background-color: #00f;
+		}
+
+
+	</style>
+</head>
+<body id="container">
+	<div class="module1 js_module_1">
+		1
+	</div>
+	<div class="module1 js_module_2">
+		2
+	</div>
+	<div class="module1 js_module_3">
+		3
+	</div>
+
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="Sortable.min.js"></script>
+	<script type="text/javascript" src="moduleSet.min.js"></script>
+	<script type="text/javascript">
+
+
+		// 调用
+
+		$(".js_module_1").moduleSet({
+			button:[
+				{text:'编辑',callback:function(){alert('编辑')},iconfont:'&#xe648;'},
+				{text:'删除',callback:function(){alert('删除')},iconfont:'&#xe613;'},
+			],
+		})
+		$(".js_module_2").moduleSet({
+			button:[
+				{text:'编辑',callback:function(){alert('编辑2')},iconfont:'&#xe648;'},
+				{text:'美化',callback:function(){alert('美化2')},iconfont:'&#xe63f;'},
+			],
+		})
+
+		$(".js_module_3").moduleSet({
+			button:[
+				{text:'编辑',callback:function(){alert('编辑3')},iconfont:'&#xe648;'},
+				{text:'美化',callback:function(){alert('美化3')},iconfont:'&#xe63f;'},
+			],
+		})
+
+		// 排序
+		var container = document.getElementById("container");
+		var sort = Sortable.create(container, {
+		  animation: 150, // ms, animation speed moving items when sorting, `0` — without animation
+		  handle: ".module1", // Restricts sort start click/touch to the specified element
+		  draggable: ".module1", // Specifies which items inside the element should be sortable
+		  onUpdate: function (evt/**Event*/){
+		  	alert(11)
+		     var item = evt.item; // the current dragged HTMLElement
+		  }
+		});
+	</script>
+</body>
+</html>
